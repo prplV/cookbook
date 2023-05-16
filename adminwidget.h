@@ -2,6 +2,8 @@
 #define ADMINWIDGET_H
 
 #include <QFrame>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
 #include "dbconnection.h"
 
 namespace Ui {
@@ -15,6 +17,7 @@ class adminWidget : public QFrame
 public:
     explicit adminWidget(QWidget *parent = nullptr);
     void setDbObj(dbconnection *db);
+    void preConnectionActions();
     ~adminWidget();
 
 private slots:
@@ -44,9 +47,32 @@ private slots:
 
     void on_exit_stat_button_clicked();
 
+    void on_execute_btn_clicked();
+
+    void on_delete_meal_clicked();
+
+    void on_insert_meal_clicked();
+
+    void on_update_meal_clicked();
+
+    void on_meal_table_view_clicked(const QModelIndex &index);
+
+    void on_meal_table_view_2_clicked(const QModelIndex &index);
+
+    void on_meal_table_view_3_clicked(const QModelIndex &index);
+
 private:
     Ui::adminWidget *ui;
     dbconnection *db;
+    QSqlQueryModel *qStat1;
+    QSqlQueryModel *qStat2;
+    QSqlQueryModel *qStat3;
+    QSqlQueryModel *qStat4;
+    QSqlQueryModel *mealTable;
+    QSqlQueryModel *ingredientTable;
+    QSqlQueryModel *categoryTable;
+    QSqlQueryModel *tempQuery;
+    int cursorStagedAtRow;
 };
 
 #endif // ADMINWIDGET_H
