@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>CookBook | Admin mode</string>
   </property>
+  <property name="inputMethodHints">
+   <set>Qt::ImhDigitsOnly</set>
+  </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
@@ -397,6 +400,9 @@
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
       <property name="placeholderText">
        <string>meal_id</string>
       </property>
@@ -545,6 +551,9 @@
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
        <property name="placeholderText">
         <string>category_id</string>
@@ -695,6 +704,9 @@
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
         <property name="placeholderText">
          <string>ingredient_id</string>
         </property>
@@ -712,6 +724,9 @@
          <font>
           <family>Source Code Pro</family>
          </font>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
         </property>
         <property name="text">
          <string/>
@@ -760,6 +775,9 @@
          <font>
           <family>Source Code Pro</family>
          </font>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
         </property>
         <property name="text">
          <string/>

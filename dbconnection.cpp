@@ -12,6 +12,7 @@ dbconnection::~dbconnection()
 }
 bool dbconnection::connect(QString userName, QString password)
 {
+    connectionName = userName;
     db.setUserName(userName);
     db.setPassword(password);
 

@@ -1,6 +1,8 @@
 #include "meallist.h"
 #include "ui_meallist.h"
 #include "logpage.h"
+#include "QDebug"
+#include "QMessageBox"
 
 mealList::mealList(QWidget *parent) :
     QFrame(parent),
@@ -8,13 +10,22 @@ mealList::mealList(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->frame->setVisible(false);
+    ui->back_to_mealList_btn->setVisible(false);
     preConnectedActions();
+
 }
 void mealList::preConnectedActions()
 {
     meal_list = new QSqlQueryModel();
     meal_list->setQuery("select * from meal_list;");
+    ingred_list = new QSqlQueryModel();
     ui->list_cookbook->setModel(meal_list);
+    ui->list_cookbook->resizeColumnsToContents();
+    ui->list_cookbook->horizontalHeader()->hide();
+    ui->list_cookbook->verticalHeader()->hide();
+    ui->list_cookbook->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->ingredientsList->verticalHeader()->hide();
+    //this->setWindowTitle(db->connectionName);
 }
 
 void mealList::setDbObj(dbconnection *db){
@@ -24,12 +35,16 @@ void mealList::setDbObj(dbconnection *db){
 mealList::~mealList()
 {
     delete ui;
+    delete meal_list;
+    delete ingred_list;
 }
 
 void mealList::on_pushButton_clicked()
 {
     ui->list_cookbook->setVisible(false);
     ui->frame->setVisible(true);
+    ui->back_to_mealList_btn->setVisible(true);
+    ui->pushButton->setVisible(false);
 }
 
 void mealList::on_exit_btn_clicked()
@@ -39,4 +54,39 @@ void mealList::on_exit_btn_clicked()
     logPage *lg = new logPage();
     lg->show();
     this->close();
+}
+
+void mealList::performCurrentMeal(int cursor)
+{
+    currentMealName = ui->list_cookbook->model()->data(ui->list_cookbook->model()->index(cursor, 0)).toString();
+    currentMealDesc = ui->list_cookbook->model()->data(ui->list_cookbook->model()->index(cursor, 1)).toString();
+
+    ui->meal_name->setText(currentMealName);
+    ui->meal_desc->setText(currentMealDesc);
+
+    ingred_list->setQuery("select * from perform_ingredients('" + currentMealName + "');");
+    ui->ingredientsList->setModel(ingred_list);
+
+    on_pushButton_clicked();
+}
+
+// meal selection
+void mealList::on_list_cookbook_doubleClicked(const QModelIndex &index)
+{
+    cursorSelectedRow = index.row();
+    performCurrentMeal(cursorSelectedRow);
+}
+
+void mealList::on_back_to_mealList_btn_clicked()
+{
+    ui->list_cookbook->setVisible(true);
+    ui->frame->setVisible(false);
+    ui->back_to_mealList_btn->setVisible(false);
+    ui->pushButton->setVisible(true);
+}
+
+// to select row
+void mealList::on_list_cookbook_clicked(const QModelIndex &index)
+{
+    cursorSelectedRow = index.row();
 }
