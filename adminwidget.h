@@ -61,6 +61,18 @@ private slots:
 
     void on_meal_table_view_3_clicked(const QModelIndex &index);
 
+    void on_insert_ingredient_clicked();
+
+    void on_update_ingredient_clicked();
+
+    void on_delete_ingredient_clicked();
+
+    void on_insert_category_clicked();
+
+    void on_delete_category_clicked();
+
+    void on_update_category_clicked();
+
 private:
     Ui::adminWidget *ui;
     dbconnection *db;
