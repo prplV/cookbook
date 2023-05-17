@@ -67,6 +67,58 @@ void mealList::performCurrentMeal(int cursor)
     ingred_list->setQuery("select * from perform_ingredients('" + currentMealName + "');");
     ui->ingredientsList->setModel(ingred_list);
 
+    QSqlQuery *query = new QSqlQuery();
+
+    // for meal_cost
+    if (query->exec("select * from get_meal_cost('" + currentMealName + "');"))
+    {
+        //ui->cm_for_db->setText(query->result());
+        while  (query->next())
+        {
+            currentMealCost = query->value(0).toString();
+            ui->cm_for_db->setText(currentMealCost);
+        }
+    }
+    else{
+        QMessageBox::critical(this, "Error!", "There's some problems with info presenting");
+        delete query;
+        return;
+    }
+
+    // for meal_nutval
+    if (query->exec("select * from get_meal_nutval('" + currentMealName + "');"))
+    {
+        //ui->cm_for_db->setText(query->result());
+        while  (query->next())
+        {
+            currentMealNutval = query->value(0).toString();
+            ui->nm_for_db->setText(currentMealNutval);
+        }
+    }
+    else{
+        QMessageBox::critical(this, "Error!", "There's some problems with info presenting");
+        delete query;
+        return;
+    }
+
+
+    // for meal_htc
+    if (query->exec("select * from get_meal_htc('" + currentMealName + "');"))
+    {
+        while  (query->next())
+        {
+            currentMealHtc = query->value(0).toString();
+            //ui->nm_for_db->setText(currentMealNutval);
+            ui->htc_meal->setText(currentMealHtc);
+        }
+    }
+    else{
+        QMessageBox::critical(this, "Error!", "There's some problems with info presenting");
+        delete query;
+        return;
+    }
+
+
     on_pushButton_clicked();
 }
 
