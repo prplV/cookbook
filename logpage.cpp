@@ -1,6 +1,5 @@
 #include "logpage.h"
 #include "ui_logpage.h"
-#include "dbconnection.h"
 #include "meallist.h"
 #include "adminwidget.h"
 #include "QDebug"
@@ -10,12 +9,14 @@ logPage::logPage(QWidget *parent)
     , ui(new Ui::logPage)
 {
     ui->setupUi(this);
+    db = new dbconnection();
     ui->frame_2->setVisible(false);
 }
 
 logPage::~logPage()
 {
     delete ui;
+    delete db;
 }
 
 
@@ -28,7 +29,6 @@ void logPage::on_log_in_btn_clicked()
     }else{
         ui->errorHandler->setText("");
 
-        dbconnection *db = new dbconnection();
         if (db->connect(ui->login_lineEdit->text(), ui->passw_lineEdit->text()))
         {
             qDebug() << "yes!";

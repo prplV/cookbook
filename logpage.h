@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include "dbconnection.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class logPage; }
@@ -27,5 +28,6 @@ private slots:
 
 private:
     Ui::logPage *ui;
+    dbconnection *db;
 };
 #endif // LOGPAGE_H

@@ -9,23 +9,23 @@ mealList::mealList(QWidget *parent) :
     ui(new Ui::mealList)
 {
     ui->setupUi(this);
-    ui->frame->setVisible(false);
+    ui->mealPage->setVisible(false);
     ui->back_to_mealList_btn->setVisible(false);
+    meal_list = new QSqlQueryModel();
+    ingred_list = new QSqlQueryModel();
     preConnectedActions();
 
 }
 void mealList::preConnectedActions()
 {
-    meal_list = new QSqlQueryModel();
     meal_list->setQuery("select * from meal_list;");
-    ingred_list = new QSqlQueryModel();
     ui->list_cookbook->setModel(meal_list);
     ui->list_cookbook->resizeColumnsToContents();
     ui->list_cookbook->horizontalHeader()->hide();
     ui->list_cookbook->verticalHeader()->hide();
     ui->list_cookbook->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->ingredientsList->verticalHeader()->hide();
-    //this->setWindowTitle(db->connectionName);
+
 }
 
 void mealList::setDbObj(dbconnection *db){
@@ -42,7 +42,7 @@ mealList::~mealList()
 void mealList::on_pushButton_clicked()
 {
     ui->list_cookbook->setVisible(false);
-    ui->frame->setVisible(true);
+    ui->mealPage->setVisible(true);
     ui->back_to_mealList_btn->setVisible(true);
     ui->pushButton->setVisible(false);
 }
@@ -80,7 +80,7 @@ void mealList::on_list_cookbook_doubleClicked(const QModelIndex &index)
 void mealList::on_back_to_mealList_btn_clicked()
 {
     ui->list_cookbook->setVisible(true);
-    ui->frame->setVisible(false);
+    ui->mealPage->setVisible(false);
     ui->back_to_mealList_btn->setVisible(false);
     ui->pushButton->setVisible(true);
 }
