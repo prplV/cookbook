@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Select</string>
+     <string>Выбрать</string>
     </property>
    </widget>
    <widget class="QPushButton" name="exit_btn">
@@ -76,7 +76,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Exit</string>
+     <string>Выйти</string>
     </property>
    </widget>
    <widget class="QPushButton" name="back_to_mealList_btn">
@@ -89,7 +89,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Back</string>
+     <string>Назад</string>
     </property>
    </widget>
   </widget>
@@ -102,6 +102,18 @@
      <height>431</height>
     </rect>
    </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderHighlightSections">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
   </widget>
   <widget class="QFrame" name="mealPage">
    <property name="geometry">
@@ -170,7 +182,7 @@
      </font>
     </property>
     <property name="text">
-     <string>nutval meal</string>
+     <string>ценность</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -193,7 +205,7 @@
      </font>
     </property>
     <property name="text">
-     <string>cost meal</string>
+     <string>стоимость</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -336,6 +348,12 @@
       <height>121</height>
      </rect>
     </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
    </widget>
    <widget class="QLabel" name="data">
     <property name="geometry">
@@ -352,7 +370,7 @@
      </font>
     </property>
     <property name="text">
-     <string>data</string>
+     <string>Данные</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -373,7 +391,7 @@
      </font>
     </property>
     <property name="text">
-     <string>description</string>
+     <string>Описание</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -394,7 +412,7 @@
      </font>
     </property>
     <property name="text">
-     <string>ingredients</string>
+     <string>Ингредиенты</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

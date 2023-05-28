@@ -48,7 +48,7 @@ void logPage::on_log_in_btn_clicked()
             }
         }
         else{
-            QMessageBox::critical(this, "Login Error!", "Incorrect login or password");
+            QMessageBox::critical(this, "Ошибка входа!", "Неверный логин или пароль");
             qDebug() << "no!";
         }
     }
@@ -69,7 +69,7 @@ void logPage::on_log_out_btn_2_clicked()
         ui->errorHandler_2->setText("Поле пароль пусто!");
     }else{
         ui->errorHandler_2->setText("");
-        QMessageBox::information(this, "Important info", "This function is unavailable in this app. It's in progress");
+        QMessageBox::information(this, "Важная информация", "Данная функция все еще в разработке");
     }
 }
 

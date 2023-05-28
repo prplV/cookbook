@@ -50,11 +50,11 @@
      <property name="font">
       <font>
        <family>Source Code Pro</family>
-       <pointsize>18</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>Welcome</string>
+      <string>Добро пожаловать</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -76,7 +76,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Log in</string>
+      <string>Войти</string>
      </property>
     </widget>
     <widget class="QPushButton" name="log_out_btn">
@@ -95,7 +95,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Sign up</string>
+      <string>Я - новичок</string>
      </property>
     </widget>
     <widget class="Line" name="line">
@@ -130,7 +130,7 @@
       <set>Qt::AlignCenter</set>
      </property>
      <property name="placeholderText">
-      <string>login</string>
+      <string>логин</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="passw_lineEdit">
@@ -161,7 +161,7 @@
       <set>Qt::AlignCenter</set>
      </property>
      <property name="placeholderText">
-      <string>password</string>
+      <string>пароль</string>
      </property>
     </widget>
     <widget class="QLabel" name="errorHandler">
@@ -205,7 +205,7 @@
       </font>
      </property>
      <property name="text">
-      <string>your pocket cookbook</string>
+      <string>все рецепты мира в одном девайсе</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -232,7 +232,7 @@
      <widget class="QLabel" name="h1_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>20</x>
         <y>10</y>
         <width>201</width>
         <height>31</height>
@@ -245,7 +245,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Log out</string>
+       <string>Регистрация</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -270,7 +270,7 @@
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>** please fill all fields **</string>
+       <string>** заполните все поля **</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -292,7 +292,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Back</string>
+       <string>Назад</string>
       </property>
      </widget>
      <widget class="QPushButton" name="log_out_btn_2">
@@ -311,7 +311,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Sign up</string>
+       <string>Создать</string>
       </property>
      </widget>
      <widget class="Line" name="line_2">
@@ -346,7 +346,7 @@
        <set>Qt::AlignCenter</set>
       </property>
       <property name="placeholderText">
-       <string>login</string>
+       <string>логин</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="passw_logout_le">
@@ -371,7 +371,7 @@
        <set>Qt::AlignCenter</set>
       </property>
       <property name="placeholderText">
-       <string>password</string>
+       <string>пароль</string>
       </property>
      </widget>
      <widget class="QLabel" name="errorHandler_2">
@@ -418,7 +418,7 @@
        <set>Qt::AlignCenter</set>
       </property>
       <property name="placeholderText">
-       <string>name</string>
+       <string>имя</string>
       </property>
      </widget>
     </widget>

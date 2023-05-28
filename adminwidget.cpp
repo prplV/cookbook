@@ -175,10 +175,10 @@ void adminWidget::on_execute_btn_clicked()
     QSqlQuery *temp = new QSqlQuery();
     if (temp->exec(ui->cp_le->text()))
     {
-        QMessageBox::information(this, "Success", "This query was successfully returned");
+        QMessageBox::information(this, "Успех", "Этот запрос был успешно возвращен");
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some troubles in query");
+        QMessageBox::critical(this, "Ошибка!", "Некорректный запрос");
         delete temp;
         return;
     }
@@ -192,25 +192,24 @@ void adminWidget::on_delete_meal_clicked()
 {
     if (cursorStagedAtRow == -1)
     {
-        QMessageBox::critical(this, "Error!", "Cursor don't points at any field in the table");
+        QMessageBox::critical(this, "Ошибка!", "Не выбрано поле");
         return;
     }
     QSqlQuery *temp = new QSqlQuery();
     if (temp->exec("call delete_meal('" + ui->meal_name->text() + "');"))
     {
-        QMessageBox::information(this, "Success", ui->meal_name->text()+ " was deleted");
+        QMessageBox::information(this, "Успех", ui->meal_name->text()+ " был удален");
         mealTable->setQuery("select id_meal, meal_name, desc_meal, htc_meal from meal");
         ui->meal_table_view->setModel(mealTable);
         delete temp;
         cursorStagedAtRow = -1;
-        ui->meal_id->setText("");
         ui->meal_name->setText("");
         ui->meal_desc->setText("");
         ui->meal_htc->setText("");
         return;
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some troubles in query");
+        QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
         delete temp;
         return;
     }
@@ -222,18 +221,17 @@ void adminWidget::on_insert_meal_clicked()
     QSqlQuery *temp = new QSqlQuery();
     if (temp->exec("call insert_new_meal('" + ui->meal_name->text() + "', '" + ui->meal_desc->text() + "', '" + ui->meal_htc->text() + "');"))
     {
-        QMessageBox::information(this, "Success", ui->meal_name->text()+ " was inserted");
+        QMessageBox::information(this, "Успех", ui->meal_name->text()+ " был добавлен");
         mealTable->setQuery("select id_meal, meal_name, desc_meal, htc_meal from meal");
         ui->meal_table_view->setModel(mealTable);
         delete temp;
         ui->meal_desc->setText("");
-        ui->meal_id->setText("");
         ui->meal_name->setText("");
         ui->meal_htc->setText("");
         return;
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some troubles in query");
+        QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
         delete temp;
         return;
     }
@@ -244,7 +242,7 @@ void adminWidget::on_update_meal_clicked()
 {
     if (cursorStagedAtRow == -1)
     {
-        QMessageBox::critical(this, "Error!", "Cursor don't points at any field in the table");
+        QMessageBox::critical(this, "Ошибка!", "Не выбрано поле");
         return;
     }
     int changesCount = 0;
@@ -259,10 +257,10 @@ void adminWidget::on_update_meal_clicked()
         if (temp->exec("call update_meal_name('" + oldName + "', '" + ui->meal_name->text() + "');"))
         {
             changesCount++;
-            QMessageBox::information(this, "Success", ui->meal_name->text()+" name was updated to" + oldName + "'s field");
+            QMessageBox::information(this, "Успех", ui->meal_name->text()+" имя было добавлено к записи с именем" + oldName);
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query");
+            QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
             delete temp;
             return;
         }
@@ -273,10 +271,10 @@ void adminWidget::on_update_meal_clicked()
         if (temp->exec("call update_meal_desc('" + ui->meal_name->text() + "', '" + ui->meal_desc->text() + "');"))
         {
             changesCount++;
-            QMessageBox::information(this, "Success", ui->meal_name->text()+ "'s desc was updated");
+            QMessageBox::information(this, "Успех", ui->meal_name->text()+ " запись в поле Описание была изменено");
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query");
+            QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
             delete temp;
             return;
         }
@@ -287,24 +285,23 @@ void adminWidget::on_update_meal_clicked()
         if (temp->exec("call update_meal_htc('" + ui->meal_name->text() + "', '" + ui->meal_htc->text() + "');"))
         {
             changesCount++;
-            QMessageBox::information(this, "Success", ui->meal_name->text()+"'s 'how to cook' field was updated");
+            QMessageBox::information(this, "Успех", ui->meal_name->text()+"запись в поле КАК ПРИГОТОВИТЬ была изменено");
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query");
+            QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
             delete temp;
             return;
         }
     }
     if (changesCount == 0)
     {
-        QMessageBox::critical(this, "Error!", "No changes was done");
+        QMessageBox::critical(this, "Ошибка!", "Не было ни одноого изменения");
         delete temp;
     }
     else{
         mealTable->setQuery("select id_meal, meal_name, desc_meal, htc_meal from meal");
         ui->meal_table_view->setModel(mealTable);
         ui->meal_desc->setText("");
-        ui->meal_id->setText("");
         ui->meal_name->setText("");
         ui->meal_htc->setText("");
         delete temp;
@@ -321,7 +318,6 @@ void adminWidget::on_meal_table_view_clicked(const QModelIndex &index)
     QString mealDesc = ui->meal_table_view->model()->data(ui->meal_table_view->model()->index(index.row(),2)).toString();
     QString mealHtc = ui->meal_table_view->model()->data(ui->meal_table_view->model()->index(index.row(),3)).toString();
 
-    ui->meal_id->setText(mealId);
     ui->meal_name->setText(mealName);
     ui->meal_desc->setText(mealDesc);
     ui->meal_htc->setText(mealHtc);
@@ -334,7 +330,6 @@ void adminWidget::on_meal_table_view_2_clicked(const QModelIndex &index)
     QString catId = ui->meal_table_view_2->model()->data(ui->meal_table_view_2->model()->index(index.row(),0)).toString();
     QString catName = ui->meal_table_view_2->model()->data(ui->meal_table_view_2->model()->index(index.row(),1)).toString();
 
-    ui->category_id->setText(catId);
     ui->category_name->setText(catName);
 }
 
@@ -348,7 +343,6 @@ void adminWidget::on_meal_table_view_3_clicked(const QModelIndex &index)
     QString ingredNutVal = ui->meal_table_view_3->model()->data(ui->meal_table_view_3->model()->index(index.row(),3)).toString();
     QString ingredCatId = ui->meal_table_view_3->model()->data(ui->meal_table_view_3->model()->index(index.row(),4)).toString();
 
-    ui->ingredient_id->setText(ingredId);
     ui->ingredient_name->setText(ingredName);
     ui->ingredient_cost_unit->setText(ingredCostUnit);
     ui->ingredient_nutval->setText(ingredNutVal);
@@ -361,10 +355,9 @@ void adminWidget::on_insert_ingredient_clicked()
     QSqlQuery *query = new QSqlQuery();
     if (query->exec("call insert_new_ingredient('" + ui->ingredient_name->text() + "', " + ui->ingredient_cost_unit->text() + ", " + ui->ingredient_nutval->text() + ", " + ui->cat_ingred->text()+ ");"))
     {
-        QMessageBox::information(this, "Success!", "New ingredient was added to the main table");
+        QMessageBox::information(this, "Успех!", "Новый ингредиент был добавлен в главную таблицу");
         ingredientTable->setQuery("select * from ingredient");
         ui->meal_table_view_2->setModel(ingredientTable);
-        ui->ingredient_id->setText("");
         ui->ingredient_name->setText("");
         ui->ingredient_cost_unit->setText("");
         ui->ingredient_nutval->setText("");
@@ -374,7 +367,7 @@ void adminWidget::on_insert_ingredient_clicked()
         return;
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some troubles in query");
+        QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
         delete query;
         return;
     }
@@ -385,7 +378,7 @@ void adminWidget::on_update_ingredient_clicked()
 {
     if (cursorStagedAtRow == -1)
     {
-        QMessageBox::critical(this, "Error!", "Cursor don't points at any field in the table");
+        QMessageBox::critical(this, "Ошибка!", "Не выбрано ни одно поле");
         return;
     }
     int changesCount = 0;
@@ -401,11 +394,11 @@ void adminWidget::on_update_ingredient_clicked()
         if (query->exec("call update_ingred_name('" + oldName + "', '" + ui->ingredient_name->text() + "');"))
         {
             changesCount++;
-            QMessageBox::information(this, "Success!", ui->ingredient_name->text() + "'s name was successfully updated in the main table");
+            QMessageBox::information(this, "Успех!", ui->ingredient_name->text() + ". Новое имя");
             cursorStagedAtRow = -1;
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query (updating name block)");
+            QMessageBox::critical(this, "Ошибка", "Ошибки в запросе (блок обновления имени)");
             delete query;
             return;
         }
@@ -417,12 +410,12 @@ void adminWidget::on_update_ingredient_clicked()
         if (query->exec("call update_ingred_cost_unit('" + ui->ingredient_name->text() + "', " + ui->ingredient_cost_unit->text() + ");"))
         {
             changesCount++;
-            QMessageBox::information(this, "Success!", ui->ingredient_name->text() + "'s cost unit was successfully updated in the main table");
+            QMessageBox::information(this, "Успех", ui->ingredient_name->text() + ". Цена за единицу изменена");
             cursorStagedAtRow = -1;
 
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query (updating cost unit block)");
+            QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе (updating cost unit block)");
             delete query;
             return;
         }
@@ -434,11 +427,11 @@ void adminWidget::on_update_ingredient_clicked()
         if (query->exec("call update_ingred_nutval('" + ui->ingredient_name->text() + "', " + ui->ingredient_nutval->text() + ");"))
         {
             changesCount++;
-            QMessageBox::information(this, "Success!", ui->ingredient_name->text() + "'s nutval was successfully updated in the main table");
+            QMessageBox::information(this, "Успех!", ui->ingredient_name->text() + ". Пищ. ценность изменена");
             cursorStagedAtRow = -1;
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query (updating nutval block)");
+            QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе (updating nutval block)");
             delete query;
             return;
         }
@@ -450,25 +443,24 @@ void adminWidget::on_update_ingredient_clicked()
         if (query->exec("call update_ingred_id_cat('" + ui->ingredient_name->text() + "', " + ui->cat_ingred->text() + ");"))
         {
             changesCount++;
-            QMessageBox::information(this, "Success!", ui->ingredient_name->text() + "'s category was successfully updated in the main table");
+            QMessageBox::information(this, "Успех!", ui->ingredient_name->text() + ". Категория изменена");
             cursorStagedAtRow = -1;
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query (updating category block)");
+            QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе (updating category block)");
             delete query;
             return;
         }
     }
     if (changesCount == 0)
     {
-        QMessageBox::critical(this, "Error!", "No changes was done");
+        QMessageBox::critical(this, "Ошибка!", "Не сделано ни одно изменение");
         delete query;
     }
     else{
         delete query;
     }
     ingredientTable->setQuery("select * from ingredient");
-    ui->ingredient_id->setText("");
     ui->ingredient_name->setText("");
     ui->ingredient_nutval->setText("");
     ui->ingredient_cost_unit->setText("");
@@ -483,15 +475,14 @@ void adminWidget::on_delete_ingredient_clicked()
 {
     if (cursorStagedAtRow == -1)
     {
-        QMessageBox::critical(this, "Error!", "Cursor don't points at any field in the table");
+        QMessageBox::critical(this, "Ошибка!", "Не выбрано ни одно поле");
         return;
     }
     QSqlQuery *query = new QSqlQuery();
     if (query->exec("call delete_ingredient('" + ui->ingredient_name->text() + "');"))
     {
-        QMessageBox::information(this, "Success!", ui->ingredient_name->text() + "was successfully deleted from the main table");
+        QMessageBox::information(this, "Успех!", ui->ingredient_name->text() + " запись была удалена");
         ingredientTable->setQuery("select * from ingredient");
-        ui->ingredient_id->setText("");
         ui->ingredient_name->setText("");
         ui->ingredient_cost_unit->setText("");
         ui->ingredient_nutval->setText("");
@@ -502,7 +493,7 @@ void adminWidget::on_delete_ingredient_clicked()
         return;
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some troubles in query");
+        QMessageBox::critical(this, "Ошибка!", "ОШибки в запросе");
         delete query;
         return;
     }
@@ -513,9 +504,8 @@ void adminWidget::on_insert_category_clicked()
     QSqlQuery *query = new QSqlQuery();
     if (query->exec("call insert_new_category('" + ui->category_name->text() + "');"))
     {
-        QMessageBox::information(this, "Success!", ui->category_name->text() + "was successfully added to the main table");
+        QMessageBox::information(this, "Успех!", ui->category_name->text() + " запись была добавлена");
         cursorStagedAtRow = -1;
-        ui->category_id->setText("");
         ui->category_name->setText("");
         categoryTable->setQuery("select * from category");
         ui->meal_table_view_2->setModel(categoryTable);
@@ -523,7 +513,7 @@ void adminWidget::on_insert_category_clicked()
         return;
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some troubles in query");
+        QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
         delete query;
         return;
     }
@@ -533,15 +523,14 @@ void adminWidget::on_delete_category_clicked()
 {
     if (cursorStagedAtRow == -1)
     {
-        QMessageBox::critical(this, "Error!", "Cursor don't points at any field in the table");
+        QMessageBox::critical(this, "Ошибка!", "НЕ ВЫБРАНО НИ ОДНО ПОЛЕ");
         return;
     }
     QSqlQuery *query = new QSqlQuery();
     if (query->exec("call delete_category('" + ui->category_name->text() + "');"))
     {
-        QMessageBox::information(this, "Success!", ui->category_name->text() + "was successfully deleted from the main table");
+        QMessageBox::information(this, "Успех!", ui->category_name->text() + " запись была удалена");
         cursorStagedAtRow = -1;
-        ui->category_id->setText("");
         ui->category_name->setText("");
         categoryTable->setQuery("select * from category");
         ui->meal_table_view_2->setModel(categoryTable);
@@ -549,7 +538,7 @@ void adminWidget::on_delete_category_clicked()
         return;
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some troubles in query");
+        QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
         delete query;
         return;
     }
@@ -559,7 +548,7 @@ void adminWidget::on_update_category_clicked()
 {
     if (cursorStagedAtRow == -1)
     {
-        QMessageBox::critical(this, "Error!", "Cursor don't points at any field in the table");
+        QMessageBox::critical(this, "Ошибка!", "Не выбрано ни одно поле");
         return;
     }
 
@@ -570,23 +559,22 @@ void adminWidget::on_update_category_clicked()
     {
         if (query->exec("call update_category_name('" + oldName + "', '" + ui->category_name->text() + "');"))
         {
-            QMessageBox::information(this, "Success!", oldName + "was successfully updated in the main table");
+            QMessageBox::information(this, "Успех!", oldName + " запись была обновлена");
             cursorStagedAtRow = -1;
-            ui->category_id->setText("");
             ui->category_name->setText("");
             categoryTable->setQuery("select * from category");
             ui->meal_table_view_2->setModel(categoryTable);
             changesCount++;
         }
         else{
-            QMessageBox::critical(this, "Error!", "There's some troubles in query");
+            QMessageBox::critical(this, "Ошибка!", "Ошибки в запросе");
             delete query;
             return;
         }
     }
     if (changesCount == 0)
     {
-        QMessageBox::critical(this, "Error!", "No changes was done");
+        QMessageBox::critical(this, "Ошибка!", "Не было сделано ни одного изменения");
         delete query;
         return;
     }

@@ -11,6 +11,7 @@ mealList::mealList(QWidget *parent) :
     ui->setupUi(this);
     ui->mealPage->setVisible(false);
     ui->back_to_mealList_btn->setVisible(false);
+    ui->pushButton->setVisible(false);
     meal_list = new QSqlQueryModel();
     ingred_list = new QSqlQueryModel();
     preConnectedActions();
@@ -44,7 +45,7 @@ void mealList::on_pushButton_clicked()
     ui->list_cookbook->setVisible(false);
     ui->mealPage->setVisible(true);
     ui->back_to_mealList_btn->setVisible(true);
-    ui->pushButton->setVisible(false);
+    //ui->pushButton->setVisible(false);
 }
 
 void mealList::on_exit_btn_clicked()
@@ -80,7 +81,7 @@ void mealList::performCurrentMeal(int cursor)
         }
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some problems with info presenting");
+        QMessageBox::critical(this, "Ошибка!", "Проблемы с отображением данных");
         delete query;
         return;
     }
@@ -96,7 +97,7 @@ void mealList::performCurrentMeal(int cursor)
         }
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some problems with info presenting");
+        QMessageBox::critical(this, "Ошибка!", "Проблемы с отображением данных");
         delete query;
         return;
     }
@@ -113,7 +114,7 @@ void mealList::performCurrentMeal(int cursor)
         }
     }
     else{
-        QMessageBox::critical(this, "Error!", "There's some problems with info presenting");
+        QMessageBox::critical(this, "Ошибка!", "Проблемы с отображением данных");
         delete query;
         return;
     }
@@ -134,7 +135,7 @@ void mealList::on_back_to_mealList_btn_clicked()
     ui->list_cookbook->setVisible(true);
     ui->mealPage->setVisible(false);
     ui->back_to_mealList_btn->setVisible(false);
-    ui->pushButton->setVisible(true);
+    //ui->pushButton->setVisible(true);
 }
 
 // to select row

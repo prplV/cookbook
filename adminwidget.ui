@@ -92,7 +92,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Edit Tables</string>
+     <string>Изменить таблицы</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -110,7 +110,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Command prompt</string>
+     <string>Командная строка</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -128,7 +128,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Statistics</string>
+     <string>Статистика</string>
     </property>
    </widget>
    <widget class="QPushButton" name="exit_adm_btn">
@@ -146,7 +146,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Exit</string>
+     <string>Выйти</string>
     </property>
    </widget>
    <widget class="QFrame" name="edit_tables_frame">
@@ -174,7 +174,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Edit &quot;meal&quot;</string>
+      <string>Изменить &quot;meal&quot;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="category_btn">
@@ -187,7 +187,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Edit &quot;category&quot;</string>
+      <string>Изменить &quot;category&quot;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_6">
@@ -200,7 +200,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Edit &quot;ingredient&quot;</string>
+      <string>Изменить &quot;ingredient&quot;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_7">
@@ -213,7 +213,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Back</string>
+      <string>Назад</string>
      </property>
     </widget>
     <widget class="QFrame" name="meal_edit_frame">
@@ -324,7 +324,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Insert meal</string>
+       <string>Создать блюдо</string>
       </property>
      </widget>
      <widget class="QPushButton" name="update_meal">
@@ -342,7 +342,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Update meal</string>
+       <string>Обновить</string>
       </property>
      </widget>
      <widget class="QPushButton" name="delete_meal">
@@ -360,7 +360,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Delete meal</string>
+       <string>Удалить блюдо</string>
       </property>
      </widget>
      <widget class="QPushButton" name="back_to_select_table">
@@ -378,33 +378,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Back</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="meal_id">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>260</y>
-        <width>141</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Source Code Pro</family>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-      <property name="placeholderText">
-       <string>meal_id</string>
+       <string>Назад</string>
       </property>
      </widget>
      <widget class="QFrame" name="meal_edit_frame_2">
@@ -440,9 +414,9 @@
       <widget class="QLineEdit" name="category_name">
        <property name="geometry">
         <rect>
-         <x>260</x>
+         <x>70</x>
          <y>200</y>
-         <width>151</width>
+         <width>321</width>
          <height>27</height>
         </rect>
        </property>
@@ -494,7 +468,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Update category</string>
+        <string>Обновить</string>
        </property>
       </widget>
       <widget class="QPushButton" name="delete_category">
@@ -530,33 +504,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Back</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="category_id">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>200</y>
-         <width>141</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Source Code Pro</family>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-       <property name="placeholderText">
-        <string>category_id</string>
+        <string>Назад</string>
        </property>
       </widget>
       <widget class="QFrame" name="meal_edit_frame_3">
@@ -592,7 +540,7 @@
        <widget class="QLineEdit" name="ingredient_name">
         <property name="geometry">
          <rect>
-          <x>150</x>
+          <x>70</x>
           <y>200</y>
           <width>151</width>
           <height>27</height>
@@ -628,7 +576,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Insert ingredient</string>
+         <string>Создать новый</string>
         </property>
        </widget>
        <widget class="QPushButton" name="update_ingredient">
@@ -646,7 +594,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Update ingredient</string>
+         <string>Обновить</string>
         </property>
        </widget>
        <widget class="QPushButton" name="delete_ingredient">
@@ -664,7 +612,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Delete ingredient</string>
+         <string>Удалить ингредиент</string>
         </property>
        </widget>
        <widget class="QPushButton" name="back_to_select_table_3">
@@ -682,41 +630,15 @@
          </font>
         </property>
         <property name="text">
-         <string>Back</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="ingredient_id">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>200</y>
-          <width>141</width>
-          <height>27</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Source Code Pro</family>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="placeholderText">
-         <string>ingredient_id</string>
+         <string>Назад</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="ingredient_cost_unit">
         <property name="geometry">
          <rect>
-          <x>300</x>
+          <x>220</x>
           <y>200</y>
-          <width>131</width>
+          <width>151</width>
           <height>27</height>
          </rect>
         </property>
@@ -820,7 +742,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Command prompt</string>
+          <string>Командная строка</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -870,7 +792,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>Execute</string>
+          <string>Запустить</string>
          </property>
         </widget>
         <widget class="QPushButton" name="back_to_menu">
@@ -883,7 +805,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>Back</string>
+          <string>Назад</string>
          </property>
         </widget>
         <widget class="QFrame" name="stat_frame">
@@ -916,7 +838,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Statistics</string>
+           <string>Статистические данные</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -972,7 +894,7 @@
            </rect>
           </property>
           <property name="text">
-           <string>EXIT</string>
+           <string>Выйти</string>
           </property>
          </widget>
         </widget>
@@ -983,7 +905,6 @@
        <zorder>insert_ingredient</zorder>
        <zorder>update_ingredient</zorder>
        <zorder>delete_ingredient</zorder>
-       <zorder>ingredient_id</zorder>
        <zorder>ingredient_cost_unit</zorder>
        <zorder>ingredient_nutval</zorder>
        <zorder>cat_ingred</zorder>
