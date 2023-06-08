@@ -15,7 +15,6 @@ mealList::mealList(QWidget *parent) :
     meal_list = new QSqlQueryModel();
     ingred_list = new QSqlQueryModel();
     preConnectedActions();
-
 }
 void mealList::preConnectedActions()
 {

@@ -39,17 +39,17 @@ void adminWidget::preConnectionActions(){
 
     // for meal frame
     mealTable = new QSqlQueryModel();
-    mealTable->setQuery("select id_meal, meal_name, desc_meal, htc_meal from meal");
+    mealTable->setQuery("select meal_name, desc_meal, htc_meal from meal");
     ui->meal_table_view->setModel(mealTable);
 
     // for category frame
     categoryTable = new QSqlQueryModel();
-    categoryTable->setQuery("select * from category");
+    categoryTable->setQuery("select name_category from category");
     ui->meal_table_view_2->setModel(categoryTable);
 
     // for ingredient frame
     ingredientTable = new QSqlQueryModel();
-    ingredientTable->setQuery("select * from ingredient");
+    ingredientTable->setQuery("select name_ingred, cost_unit_ingred, nutval_ingred, id_cat_ingred from ingredient");
     ui->meal_table_view_3->setModel(ingredientTable);
 }
 

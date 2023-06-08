@@ -450,7 +450,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Insert category</string>
+        <string>Создать</string>
        </property>
       </widget>
       <widget class="QPushButton" name="update_category">
@@ -486,7 +486,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Delete category</string>
+        <string>Удалить</string>
        </property>
       </widget>
       <widget class="QPushButton" name="back_to_select_table_2">
